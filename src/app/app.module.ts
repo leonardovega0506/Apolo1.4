@@ -43,6 +43,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agregar-item-admin.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +85,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     DetalleItemReciboComponent,
     ListaItemReciboComponent,
     ListaRegistroReciboComponent,
-    SidebarReciboComponent
+    SidebarReciboComponent,
+    AgregarItemAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +94,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    HttpClientModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,50 @@
+<section class="articles">
+  <article>
+
+    <div class="article-wrapper">
+      <figure>
+        <!--<img src="http://104.36.166.251:5757/fotos_productos/{{this.item?.itemCode}}.jpg" alt="" />-->
+      </figure>
+      <div class="article-body">
+        <h2>{{item?.itemName}}</h2>
+        <p>
+          Codigo: {{item?.itemCode}}
+        </p>
+        <p>
+          Sat: {{item?.ncmCode}}
+        </p>
+        <p>
+          Resurtido: {{item?.properties4}}
+        </p>
+        <a href="/admin/item" class="read-more">
+          Regresar
+        </a>
+        <br>
+        <a (click)="openEditar(modalEdit)" class="read-more">
+          Editar
+        </a>
+      </div>
+    </div>
+  </article>
+</section>
+
+
+<!--Modal Crear Registro-->
+<ng-template #modalEdit let-modal>
+  <form>
+    <!--Cabecera-->
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Actualizar Item</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo-->
+
+    <!--Footer-->
+    <div class="modal-footer">
+      <button type="submit" class="btn button">Actualizar</button>
+      <button type="button" class="btn  button-2" (click)="modal.close()">Cerrar</button>
+    </div>
+  </form>
+</ng-template>

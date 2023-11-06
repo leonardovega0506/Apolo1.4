@@ -2,8 +2,8 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 <div class="main-content">
   <div class="container mt-7">
-    <!-- Table -->
-    <!-- Dark table -->
+    <button [routerLink]="'/admin/item/crear'">Crear Producto</button>
+    <button (click)="open(buscarItem)">Buscar producto por Código</button>
     <div class="row mt-5">
       <div class="col">
         <div class="card bg-default shadow">
@@ -20,23 +20,23 @@
                   <th scope="col">Accion</th>
                 </tr>
               </thead>
-              <tbody >
+              <tbody *ngFor="let item of items">
                 <tr>
                   <th scope="row">
                     <div class="media align-items-center">
                       <div class="media-body">
-                        <span class="mb-0 text-sm"></span>
+                        <span class="mb-0 text-sm">{{item.idItem}}</span>
                       </div>
                     </div>
                   </th>
                   <td class="color-td">
-
+                    {{item.itemCode}} 
                   </td>
                   <td class="color-td">
-
+                    {{item.itemName}}
                   </td>
                   <td class="text-right">
-                    <a class="button-2 text-white" [routerLink]="'/admin/items/'">Detalles</a>
+                    <a class="button-2 text-white" [routerLink]="'/admin/item/'+item.idItem">Detalles</a>
                   </td>
                 </tr>
               </tbody>
@@ -46,10 +46,10 @@
             <nav aria-label="...">
               <ul class="pagination justify-content-end mb-0">
                 <li class="page-item">
-                  <a class="page-link bg-sort" >Prev</a>
+                  <a class="page-link bg-sort" *ngIf="botonprev == true" (click)="prevPage()">Prev</a>
                 </li>
                 <li class="page-item">
-                  <a class="page-link bg-sort" >Next <span
+                  <a class="page-link bg-sort" *ngIf="boton==true" (click)="nextPage()">Next <span
                       class="sr-only">(current)</span></a>
                 </li>
               </ul>
@@ -66,4 +66,11 @@
       <i class="bg-success"></i> Finalizado
     </span>
   </td>
+</ng-template>
+
+<ng-template #buscarItem let-modal>
+  <div>
+    <input type="text" [(ngModel)]="itemCode" name="itemCode"/>
+    <button (click)="buscarItemCode()">Buscar</button>
+  </div>
 </ng-template>

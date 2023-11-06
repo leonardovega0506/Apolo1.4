@@ -21,12 +21,12 @@ export class AndService {
   /* ***Productos*** */
   //Listar los Productos
   public listaItems(pagina:any,pageSize:any,orderBy:any,sort:any) {
-    return this.http.get(this.baseAnd + "item?orderBy="+orderBy+"&pageNo="+pagina+"&pageSize="+pageSize+"&sortDir="+sort);
+    return this.http.get(this.baseAnd + "/item?orderBy="+orderBy+"&pageNo="+pagina+"&pageSize="+pageSize+"&sortDir="+sort);
   }
 
   //Obtener el producto por el codigo
   public obtenerItemByItemCode(itemCode: any) {
-    return this.http.get(this.baseAnd + "item/itemCode?itemCode=" + itemCode);
+    return this.http.get(this.baseAnd + "/item/itemCode?itemCode=" + itemCode);
   }
 
   public obtenerItemById(id:any){
