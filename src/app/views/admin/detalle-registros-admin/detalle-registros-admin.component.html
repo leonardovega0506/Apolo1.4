@@ -1,0 +1,91 @@
+<h1>Detalles del Registro</h1><br><br>
+<div class="container">
+  <br><br>
+  <div class="card">
+    <h3 class="title">Orden de Compra</h3>
+    <br><br><br>{{registro?.ordenCompra.docNum}}
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+    </div>
+    <div class="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle class="stroke" cx="60" cy="60" r="50" />
+      </svg>
+    </div>
+  </div>
+  <div class="card">
+    <h3 class="title">Estatus</h3>
+    <br><br><br>{{registro?.estatus}}
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar">
+      </div>
+    </div>
+    <div class="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle class="stroke" cx="60" cy="60" r="50" />
+      </svg>
+    </div>
+  </div>
+  <div class="card">
+    <h3 class="title">Area</h3>
+    <br><br><br>{{registro?.area}}
+    <div class="bar">
+      <div class="emptybar"></div>
+      <div class="filledbar"></div>
+    </div>
+    <div class="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle class="stroke" cx="60" cy="60" r="50" />
+      </svg>
+    </div>
+  </div>
+  <div class="card">
+    <h3 class="title">Comentarios</h3>
+    <br><br><br>{{registro?.comentariosAlmacen}}
+    <div class="bar">
+      <div class="emptybar"></div>
+
+      <div class="filledbar"></div>
+    </div>
+    <div class="circle">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <circle class="stroke" cx="60" cy="60" r="50" />
+      </svg>
+    </div>
+  </div>
+</div>
+<div class="posicion">
+  <h1>Linea de Tiempo</h1>
+  <ul>
+    <li style="--accent-color:#634A97"  *ngIf="registro?.dateReciboOCLlegada">
+      <div class="date"> Llegada a Recibo</div>
+      <div class="descr">La orden de compra llego el dia {{registro?.dateReciboOCLlegada}} a las {{registro?.timeReciboOCLlegada.substring(0,5)}}</div>
+    </li>
+    <li style="--accent-color:#FF5078" *ngIf="registro?.dateReciboMuestraM">
+      <div class="date">Muestra a Compra</div>
+      <div class="descr">Se ha mandado la muestra a compras el dia {{registro?.dateReciboMuestraM}} a las {{registro?.timeReciboMuestraM.substring(0,5)}}</div>
+    </li>
+    <li style="--accent-color:#634A97" *ngIf="registro?.dateReciboL">
+      <div class="date">Muestra Liberada</div>
+      <div class="descr">Se ha liberado la mercancia a recibo el dia {{registro?.dateReciboLL}} a las {{registro?.timeReciboL.substring(0,5)}}.</div>
+    </li>
+    <li style="--accent-color:#FF5078" *ngIf="registro?.dateTransito">
+      <div class="date">Mercancia a Transito</div>
+      <div class="descr">Se ha mandado la mercancia a transito el dia {{registro?.dateTransito}} a las {{registro?.timeTransito.substring(0,5)}}.</div>
+    </li>
+    <li style="--accent-color:#634A97"  *ngIf="registro?.dateAlmacen">
+      <div class="date">Mercancia asignada</div>
+      <div class="descr">Se ha asignado la mercancia al almacen disponible el dia {{registro?.dateAlmacen}} a las {{registro?.timeAlmacen.substring(0,5)}}.</div>
+    </li>
+    <li style="--accent-color:#FF5078" *ngIf="registro?.dateAlmacenVerificado">
+        <div class="date">Mercancia Liberada para Unidades de Negocio</div>
+        <div class="descr">Se ha liberado la mercancia a las unidades de negocio el dia {{registro?.dateAlmacenVerificado}} a las {{registro?.timeAlmacenVerificado.substring(0,5)}}</div>
+    </li>
+    <li style="--accent-color:#634A97" *ngIf="registro?. datePedidoEspecial">
+        <div class="date">Mercancia con pedido Especial</div>
+        <div class="descr">Se ha hehco el registro del pedido especial el dia {{registro?.datePedidoEspecial}} a las {{registro?.timePedidoEspecial.substring(0,5)}}</div>
+    </li>
+  </ul>
+</div>

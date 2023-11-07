@@ -8,6 +8,7 @@ import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agre
 import { ListaOrdenAdminComponent } from './views/admin/lista-orden-admin/lista-orden-admin.component';
 import { DetalleOrdenAdminComponent } from './views/admin/detalle-orden-admin/detalle-orden-admin.component';
 import { ListaRegistroAdminComponent } from './views/admin/lista-registro-admin/lista-registro-admin.component';
+import { DetalleRegistrosAdminComponent } from './views/admin/detalle-registros-admin/detalle-registros-admin.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
     {path:'item/:id',component:DetalleItemAdminComponent},
     {path:'orden',component:ListaOrdenAdminComponent},
     {path:'orden/:id',component:DetalleOrdenAdminComponent},
-    {path:'registro',component:ListaRegistroAdminComponent}
+    {path:'registro',component:ListaRegistroAdminComponent},
+    {path:'registro/:id',component:DetalleRegistrosAdminComponent}
   ]}
 ];
 

@@ -1,0 +1,145 @@
+<h1 class="titulo">Registros</h1>
+<a class="button text-white" (click)="open(contenido)">Crear Registros</a>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<div class="main-content">
+  <div class="container mt-7">
+    <!-- Table -->
+    <!-- Dark table -->
+    <div class="row mt-5">
+      <div class="col">
+        <div class="card bg-default shadow">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white mb-0 font-Monserrat">Registros</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center  table-flush">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"># Registro</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Area</th>
+                  <th scope="col">Progreso</th>
+                  <th scope="col">Accion</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let registro of registros">
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{registro.idRegistro}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="color-td">
+                    {{registro.cuadrante}}
+                  </td>
+                  <td class="color-td" *ngIf="registro.area!='Finalizado';else finalizado">
+                    <span class="badge badge-dot mr-4">
+                      <i class="bg-warning"></i> {{registro.estatus}}
+                    </span>
+                  </td>
+                  <td class="color-td">
+                    <div class="avatar-group">
+                      {{registro.area}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="mr-2">{{registro.progreso}}</span>
+                      <div>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                            aria-valuemax="100" [ngStyle]="{'width':registro.progreso}"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <a class="button-2 text-white" [routerLink]="'/admin/registro/'+registro.idRegistro">Detalles</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer bg-default py-4">
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <li class="page-item">
+                  <a class="page-link bg-sort" *ngIf="botonprev == true" (click)="prevPage()">Prev</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link bg-sort" *ngIf="boton==true" (click)="nextPage()">Next <span
+                      class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #finalizado>
+  <td class="color-td">
+    <span class="badge badge-dot mr-4">
+      <i class="bg-success"></i> Finalizado
+    </span>
+  </td>
+</ng-template>
+
+<!--Modal Crear Registro-->
+<ng-template #contenido let-modal>
+  <form (ngSubmit)="checarTipo()">
+    <!--Cabecera-->
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Crear Registro</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo-->
+    <div class="modal-body fondo-modal">
+      <p>¿Cuenta con numero de Orden?</p>
+      <p>
+        <input type="radio" name="verificacion" value="Si" id="positivo" (click)="showData()">Sí
+        <input type="radio" name="verificacion" value="No" id="negativo" (click)="hideData()">No
+      </p>
+      <div *ngIf="verificacion == true">
+        <div class="form__group">
+          <input type="checkbox" [(ngModel)]="especial" name="especial">
+          <label for="berries_1">Pedido Especial</label>
+        </div>
+        <br>
+        <label for="numeroEntrada">Ingrese el numero de orden</label>
+        <input type="text" [(ngModel)]="numeroEntrada" name="numeroEntrada" placeholder="Numero de Orden"
+          class="form-control mr-sm-2">
+          <br>
+          <label for="numeroEntrada">Seleccione el tipo de orden</label><br>
+          <select class="cuadrante" required [(ngModel)]="cuadrante" name="cuadrante" id="cuadrante">
+            <option>Linea</option>
+            <option>Casa</option>
+          </select>
+      </div>
+      <div *ngIf="verificacion == false">
+        <label for="numeroEntrada">Ingrese el nombre del proveedor</label>
+        <input type="text" [(ngModel)]="proveedor" name="numeroEntrada" placeholder="Nombre Proveedor"
+          class="form-control mr-sm-2">
+        <br>
+        <label for="numeroEntrada">Seleccione el tipo de orden</label><br>
+        <select class="cuadrante" required [(ngModel)]="cuadrante" name="cuadrante" id="cuadrante">
+          <option>Linea</option>
+          <option>Casa</option>
+          <option>Centro</option>
+          <option>Novedad</option>
+        </select>
+      </div>
+    </div>
+    <!--Footer-->
+    <div class="modal-footer">
+      <button type="submit" class="btn button">Generar</button>
+      <button type="button" class="btn  button-2" (click)="modal.close()">Cerrar</button>
+    </div>
+  </form>
+</ng-template>
