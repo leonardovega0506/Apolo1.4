@@ -47,6 +47,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agregar-item-admin.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -98,7 +100,9 @@ import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agre
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
