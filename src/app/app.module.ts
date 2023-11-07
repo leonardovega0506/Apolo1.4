@@ -39,7 +39,6 @@ import { ListaItemReciboComponent } from './views/recibo/lista-item-recibo/lista
 import { ListaRegistroReciboComponent } from './views/recibo/lista-registro-recibo/lista-registro-recibo.component';
 import { SidebarReciboComponent } from './views/recibo/sidebar-recibo/sidebar-recibo.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agregar-item-admin.component';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
@@ -47,6 +46,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agregar-item-admin.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +99,6 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     NgbModule,
     FormsModule,
     ReactiveFormsModule
-    
   ],
   providers: [],
   bootstrap: [AppComponent]
