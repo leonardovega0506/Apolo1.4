@@ -1,0 +1,71 @@
+<h1>Ordenes</h1>
+<button class="button" (click)="open(contenido)">Asginar Orden</button>
+<ul>
+    <li class="card" style="--color:#ececec; --bg-color:#634A97">
+      <div class="icon"><i class="fa-solid fa-house"></i></div>
+      <div class="title">Numero de Orden</div>
+      <div class="content">{{orden?.docNum}} </div>
+    </li>
+    <li class="card" style="--color:#ececec; --bg-color:#C81E6E">
+      <div class="icon"><i class="fa-solid fa-gear"></i></div>
+      <div class="title">&nbsp;&nbsp;&nbsp; Proveedor</div>
+      <div class="content">Codigo: {{orden?.cardCode}} &nbsp; &nbsp; Nombre: {{orden?.cardName}} </div>
+    </li>
+    <li class="card" style="--color:#ececec; --bg-color:#FF5078">
+      <div class="icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+      <div class="title">Fecha</div>
+      <div class="content">{{orden?.docDate}} </div>
+    </li>
+    <li class="card" style="--color:#ececec; --bg-color:#3CC3C8">
+      <div class="icon"><i class="fa-solid fa-chart-column"></i></div>
+      <div class="title">Total</div>
+      <div class="content">{{orden?.docTotal}} </div>
+    </li>
+    <li class="card" style="--color:#ececec; --bg-color:#FFC300">
+      <div class="icon"><i class="fa-solid fa-circle-star"></i></div>
+      <div class="title">Tipo</div>
+      <div class="content">{{orden?.cuadrante}}</div>
+    </li>
+  </ul>
+<button (click)="traerDetallesOrden()">
+    Detalles
+</button>
+<table>
+    <tr>
+    <th>id</th>
+    <th>ItemCode</th>
+    <th>Descripcion</th>
+    <th>Cantidad</th>
+    <th>Precio</th>
+    </tr>
+    <tr *ngFor="let detalle of listaDetalles">
+        <td>{{detalle.idDetalleOrden}}</td>
+        <td>{{detalle.itemCode}}</td>
+        <td>{{detalle.itemDescription}}</td>
+        <td>{{detalle.cantidad}}</td>
+        <td>{{detalle.precio}}</td>
+    </tr>
+</table>
+  <!--Ventana Modal Asignar Orden-->
+<ng-template #contenido let-modal>
+  <form (ngSubmit)="asignarOrden()">
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Asignar Orden</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body fondo-modal-buscar">
+      <div class="col">
+        <label for="ejemplo">Numero de Orden</label>
+        <input type="text" [(ngModel)]="ordenData.docEntry" class="form-control" name="docEntry"
+          placeholder="Numero de Orden">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btnBuscar">Asignar</button>
+    </div>
+  </form>
+</ng-template>
+<!--Cerrar Ventana Modal Buscar Orden-->
+

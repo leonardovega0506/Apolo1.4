@@ -72,7 +72,7 @@ export class AndService {
 
   //Asignar una orden en MySQL desde SAP
     public asignarOrden(docNum: any, id: any) {
-    return this.http.get(this.baseAnd + " /orden/assign-order/"+id+"?docNum="+docNum);
+    return this.http.get(this.baseAnd + "/orden/assign-order/"+id+"?docNum="+docNum);
   }
 
   //Listar las ordenes

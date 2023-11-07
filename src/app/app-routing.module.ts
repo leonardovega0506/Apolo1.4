@@ -5,6 +5,9 @@ import { DashboardAdminComponent } from './views/admin/dashboard-admin/dashboard
 import { ListaItemAdminComponent } from './views/admin/lista-item-admin/lista-item-admin.component';
 import { DetalleItemAdminComponent } from './views/admin/detalle-item-admin/detalle-item-admin.component';
 import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agregar-item-admin.component';
+import { ListaOrdenAdminComponent } from './views/admin/lista-orden-admin/lista-orden-admin.component';
+import { DetalleOrdenAdminComponent } from './views/admin/detalle-orden-admin/detalle-orden-admin.component';
+import { ListaRegistroAdminComponent } from './views/admin/lista-registro-admin/lista-registro-admin.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -12,6 +15,9 @@ const routes: Routes = [
     {path:'item',component:ListaItemAdminComponent},
     {path:'item/crear',component:AgregarItemAdminComponent},
     {path:'item/:id',component:DetalleItemAdminComponent},
+    {path:'orden',component:ListaOrdenAdminComponent},
+    {path:'orden/:id',component:DetalleOrdenAdminComponent},
+    {path:'registro',component:ListaRegistroAdminComponent}
   ]}
 ];
 

@@ -1,0 +1,74 @@
+<h1 class="titulo">Ordenes</h1>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<div class="main-content">
+  <div class="container mt-7">
+    <!-- Table -->
+    <!-- Dark table -->
+    <div class="row mt-5">
+      <div class="col">
+        <div class="card bg-default shadow">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white mb-0 font-Monserrat">Registros</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center  table-flush">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col"># </th>
+                  <th scope="col"># Orden</th>
+                  <th scope="col">Nota</th>
+                  <th scope="col">Total</th>
+                  <th scope="col">Proveedor</th>
+                  <th scope="col">Accion</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let orden of ordenes">
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{orden.idOrdenCompra}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="color-td">
+                    {{orden.docNum}}
+                  </td>
+                  <td class="color-td">
+                    {{orden.estatnota_remision}}
+                  </td>
+                  <td class="color-td">
+                    <div class="avatar-group">
+                      {{orden.docTotal}}
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <span class="mr-2">{{orden.cardName}}</span>
+                    </div>
+                  </td>
+                  <td class="text-right">
+                    <a class="button-2 text-white" [routerLink]="'/admin/orden/'+orden.idOrdenCompra">Detalles</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-footer bg-default py-4">
+            <nav aria-label="...">
+              <ul class="pagination justify-content-end mb-0">
+                <li class="page-item">
+                  <a class="page-link bg-sort" *ngIf="botonprev == true" (click)="prevPage()">Prev</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link bg-sort" *ngIf="boton==true" (click)="nextPage()">Next <span
+                      class="sr-only">(current)</span></a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
