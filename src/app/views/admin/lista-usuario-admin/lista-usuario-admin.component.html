@@ -1,0 +1,141 @@
+<h1 class="titulo">Usuarios</h1>
+<a class="button text-white" (click)="open(contenido)">Crear Usuarios</a>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+<div class="main-content">
+  <div class="container mt-7">
+    <!-- Table -->
+    <!-- Dark table -->
+    <div class="row mt-5">
+      <div class="col">
+        <div class="card bg-default shadow">
+          <div class="card-header bg-transparent border-0">
+            <h3 class="text-white mb-0 font-Monserrat">Registros</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center  table-flush">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Usuario</th>
+                  <th scope="col">Area</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let user of users">
+                <tr>
+                  <th scope="row">
+                    <div class="media align-items-center">
+                      <div class="media-body">
+                        <span class="mb-0 text-sm">{{user.idUsuario}}</span>
+                      </div>
+                    </div>
+                  </th>
+                  <td class="color-td">
+                    {{user.nombre}}
+                  </td>
+                  <td class="color-td">
+                    {{user.username}}
+                  </td>
+                  <td class="text-right">
+                    {{user.area}}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Modal Crear Registro-->
+<ng-template #contenido let-modal>
+  <form (ngSubmit)="crearUsuario()">
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Crear Usuario</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Nombrel Usuario-->
+    <div class="modal-body fondo-modal">
+      <div class="col">
+        <label for="ejemplo">Nombre de Usuario</label>
+        <input type="text" [(ngModel)]="usuarioData.nombre" class="form-control" name="nombre"
+          placeholder="Nombre de Usuario" required>
+      </div>
+      <!--Usuario-->
+      <div class="col">
+        <label for="ejemplo">Usuario</label>
+        <input type="text" [(ngModel)]="usuarioData.username" class="form-control" name="username"
+          placeholder="usuario" required>
+      </div>
+      <!--Contraseña-->
+      <div class="col">
+        <label for="ejemplo">Contraseña</label>
+        <input type="password" [(ngModel)]="usuarioData.password" class="form-control" name="docDate"
+          placeholder="password" required>
+      </div>
+      <!--Area-->
+      <div class="col">
+        <label for="area">Area</label>
+        <select class="form-control" name="area" id="area" [(ngModel)]="usuarioData.area" required="true">
+          <option>ADMIN</option>
+          <option>ALMACEN</option>
+          <option>COMPRAS</option>
+          <option>RECIBO</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn button">Guardar Usuario</button>
+      <button type="button" class="btn button-2" (click)="modal.close()">Cerrar</button>
+    </div>
+  </form>
+</ng-template>
+
+<!--Modal Crear Registro-->
+<ng-template #editar let-modal>
+  <form (ngSubmit)="crearUsuario()">
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Editar Usuario</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Nombrel Usuario-->
+    <div class="modal-body fondo-modal">
+      <div class="col">
+        <label for="ejemplo">Nombre de Usuario</label>
+        <input type="text" [(ngModel)]="usuarioData.nombre" class="form-control" name="nombre"
+          placeholder="Nombre de Usuario" required>
+      </div>
+      <!--Usuario-->
+      <div class="col">
+        <label for="ejemplo">Usuario</label>
+        <input type="text" [(ngModel)]="usuarioData.username" class="form-control" name="username"
+          placeholder="usuario" required>
+      </div>
+      <!--Contraseña-->
+      <div class="col">
+        <label for="ejemplo">Contraseña</label>
+        <input type="password" [(ngModel)]="usuarioData.password" class="form-control" name="docDate"
+          placeholder="password" required>
+      </div>
+      <!--Area-->
+      <div class="col">
+        <label for="area">Area</label>
+        <select class="form-control" name="area" id="area" [(ngModel)]="usuarioData.area" required="true">
+          <option>ADMIN</option>
+          <option>ALMACEN</option>
+          <option>COMPRAS</option>
+          <option>RECIBO</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn button">Guardar Usuario</button>
+      <button type="button" class="btn button-2" (click)="modal.close()">Cerrar</button>
+    </div>
+  </form>
+</ng-template>
+

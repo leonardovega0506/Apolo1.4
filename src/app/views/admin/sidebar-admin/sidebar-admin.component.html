@@ -1,0 +1,66 @@
+<!-- app.component.html -->
+<div class="wrapper">
+    <!-- Sidebar -->
+    <nav class="sidebar" [class.active]="sidebarActive">
+      <div class="dismiss" [class.active]="sidebarActive" >
+        <i class="fas fa-arrow-left"></i>
+      </div>
+  
+      <div class="logo">
+        <a [routerLink]="'/admin'" ><img src="/assets/ANANDA-blanco.png"></a>
+      </div>
+  
+  
+      <ul class="list-unstyled menu-elements">
+        <li class="active">
+          <a class="scroll-link" [routerLink]="'/admin'" ><i class="fas fa-home"></i>&nbsp;
+            Casa</a>
+        </li>
+        <li>
+          <a class="scroll-link" [routerLink]="'/admin/item'">
+            <i class="fas fa-regular fa-boxes-stacked"></i>&nbsp;Productos</a>
+        </li>
+        <li>
+          <a class="scroll-link" [routerLink]="'/admin/orden'" ><i
+              class="fa-solid fa-people-group"></i>Ordenes</a>
+        </li>
+        <li>
+          <a class="scroll-link" [routerLink]="'/admin/registro'" ><i
+              class="fa-solid fa-person-falling"></i>Registros</a>
+        </li>
+        <li>
+          <a class="scroll-link" [routerLink]="'/admin/stats'" ><i
+              class="fas fa-location-crosshairs"></i>Estaditicas</a>
+        </li>
+        <li>
+          <a class="scroll-link" [routerLink]="'/admin/usuario'" ><i
+              class="fas fa-location-crosshairs"></i>Usuarios</a>
+        </li>
+        <br><br><br>
+        <li> <a class="scroll-link" ><i class="fa-solid fa-door-open"></i>Salir</a></li>
+      </ul>
+      <!-- ... botones de estilo y más contenido -->
+  
+    </nav>
+    <!-- End sidebar -->
+  
+    <div class="overlay" [class.active]="sidebarActive" ></div>
+  
+    <!-- Content -->
+    <div class="content fondo_total">
+      <a class="btn btn-primary btn-customized open-menu" >
+        <i class="fas fa-align-left"></i> <span>&nbsp;&nbsp;Menu</span>
+      </a>
+      <div class="contendio_total">
+        <div *ngIf="isHomePage">
+          <h1 class="bienvenida">{{welcomeMessage}}</h1>
+          <br><br><br>
+          <img src="assets/ANANDANEGRO_2.png" alt="">
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+      <!-- ... contenido de la página -->
+    </div>
+    <!-- End content -->
+  </div>
+  

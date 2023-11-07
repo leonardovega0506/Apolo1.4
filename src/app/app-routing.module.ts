@@ -9,6 +9,8 @@ import { ListaOrdenAdminComponent } from './views/admin/lista-orden-admin/lista-
 import { DetalleOrdenAdminComponent } from './views/admin/detalle-orden-admin/detalle-orden-admin.component';
 import { ListaRegistroAdminComponent } from './views/admin/lista-registro-admin/lista-registro-admin.component';
 import { DetalleRegistrosAdminComponent } from './views/admin/detalle-registros-admin/detalle-registros-admin.component';
+import { StatsAdminComponent } from './views/admin/stats-admin/stats-admin.component';
+import { ListaUsuarioAdminComponent } from './views/admin/lista-usuario-admin/lista-usuario-admin.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -19,7 +21,9 @@ const routes: Routes = [
     {path:'orden',component:ListaOrdenAdminComponent},
     {path:'orden/:id',component:DetalleOrdenAdminComponent},
     {path:'registro',component:ListaRegistroAdminComponent},
-    {path:'registro/:id',component:DetalleRegistrosAdminComponent}
+    {path:'registro/:id',component:DetalleRegistrosAdminComponent},
+    {path:'stats',component:StatsAdminComponent},
+    {path:'usuario',component:ListaUsuarioAdminComponent}
   ]}
 ];
 
