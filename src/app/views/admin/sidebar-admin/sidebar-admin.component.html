@@ -1,177 +1,69 @@
-<!-- app.component.html -->
-<div class="wrapper">
-  <!-- Sidebar -->
-  <nav class="sidebar" [class.active]="sidebarActive">
-    <div class="dismiss" [class.active]="sidebarActive">
-      <i class="fas fa-arrow-left"></i>
-    </div>
 
-    <div class="logo">
-      <a [routerLink]="'/admin'"><img src="/assets/ANANDA-blanco.png"></a>
-    </div>
-
-
-    <ul class="list-unstyled menu-elements">
-      <li class="active">
-        <a class="scroll-link" [routerLink]="'/admin'"><i class="fas fa-home"></i>&nbsp;
-          Casa</a>
-      </li>
-      <li>
-        <a class="scroll-link" >
-          <i class="fas fa-regular fa-boxes-stacked"></i>&nbsp;Productos</a>
-      </li>
-      <li>
-        <a class="scroll-link" [routerLink]="'/admin/orden'"><i class="fa-solid fa-people-group"></i>Ordenes</a>
-      </li>
-      <li>
-        <a class="scroll-link" [routerLink]="'/admin/registro'"><i class="fa-solid fa-person-falling"></i>Registros</a>
-      </li>
-      <li>
-        <a class="scroll-link" [routerLink]="'/admin/stats'"><i class="fas fa-location-crosshairs"></i>Estaditicas</a>
-      </li>
-      <li>
-        <a class="scroll-link" [routerLink]="'/admin/usuario'"><i class="fas fa-location-crosshairs"></i>Usuarios</a>
-      </li>
-      <br><br><br>
-      <li> <a class="scroll-link"><i class="fa-solid fa-door-open"></i>Salir</a></li>
-    </ul>
-    <!-- ... botones de estilo y más contenido -->
-
-  </nav>
-  <!-- End sidebar -->
-
-  <div class="overlay" [class.active]="sidebarActive"></div>
-
-  <!-- Content -->
+<div class="wrapper sidebar">
+  <div class="overlay"></div>
   <div class="content fondo_total">
-    <a class="btn btn-primary btn-customized open-menu">
-      <i class="fas fa-align-left"></i> <span>&nbsp;&nbsp;Menu</span>
-    </a>
     <div class="contendio_total">
-      <div *ngIf="isHomePage">
-        <h1 class="bienvenida">{{welcomeMessage}}</h1>
-        <br><br><br>
-      </div>
       <router-outlet></router-outlet>
     </div>
-    <!-- ... contenido de la página -->
   </div>
-  <!-- End content -->
-</div>
+</div> 
 
-
-
-<nav class="main-menu">
-  <div class="settings"></div>
-  <div class="scrollbar" id="style-1">
-    <ul>
+<nav class="main-menu patron">
+  <br>
+  <div class="scrollbar patron" id="style-1">
+    <ul >
       <li>
-        <a href="/admin">
-          <i class="fa fa-home fa-lg"></i>
+        <a [routerLink]="'/admin'">
+          <i class="fa fa-house fa-lg"></i>
           <span class="nav-text">Casa</span>
         </a>
       </li>
       <li class="darkerlishadow">
         <a [routerLink]="'/admin/item'">
-          <i class="fa fa-boxes" ></i>
+          <i class="fa fa-boxes-stacked fa-lg"></i>
           <span class="nav-text">Productos</span>
         </a>
       </li>
 
       <li class="darkerli">
-        <a href="http://startific.com">
-          <i class="fa fa-desktop fa-lg"></i>
-          <span class="nav-text">Technology</span>
+        <a [routerLink]="'/admin/orden'">
+          <i class="fa fa-file-invoice fa-lg"></i>
+          <span class="nav-text">Ordenes</span>
         </a>
       </li>
 
       <li class="darkerli">
-        <a href="http://startific.com">
-          <i class="fa fa-plane fa-lg"></i>
-          <span class="nav-text">Travel</span>
+        <a [routerLink]="'/admin/registro'">
+          <i class="fa fa-clock-rotate-left fa-lg"></i>
+          <span class="nav-text">Registros</span>
         </a>
       </li>
 
       <li class="darkerli">
-        <a href="http://startific.com">
-          <i class="fa fa-shopping-cart"></i>
-          <span class="nav-text">Shopping</span>
+        <a [routerLink]="'/admin/stats'">
+          <i class="fa fa-bar-chart"></i>
+          <span class="nav-text">Estadisticas</span>
         </a>
       </li>
 
       <li class="darkerli">
-        <a href="http://startific.com">
-          <i class="fa fa-microphone fa-lg"></i>
-          <span class="nav-text">Film & Music</span>
+        <a [routerLink]="'/admin/usuario'">
+          <i class="fa fa-users fa-lg"></i>
+          <span class="nav-text">Usuarios</span>
         </a>
       </li>
-
-      <li class="darkerli">
-        <a href="http://startific.com">
-          <i class="fa fa-flask fa-lg"></i>
-          <span class="nav-text">Web Tools</span>
-        </a>
-      </li>
-
-      <li class="darkerli">
-        <a href="http://startific.com">
-          <i class="fa fa-picture-o fa-lg"></i>
-          <span class="nav-text">Art & Design</span>
-        </a>
-      </li>
-
-      <li class="darkerli">
-        <a href="http://startific.com">
-          <i class="fa fa-align-left fa-lg"></i>
-          <span class="nav-text">Magazines
-          </span>
-        </a>
-      </li>
-
-      <li class="darkerli">
-        <a href="http://startific.com">
-          <i class="fa fa-gamepad fa-lg"></i>
-          <span class="nav-text">Games</span>
-        </a>
-      </li>
-
-      <li class="darkerli">
-        <a href="http://startific.com">
-          <i class="fa fa-glass fa-lg"></i>
-          <span class="nav-text">Life & Style
-          </span>
-        </a>
-      </li>
-
-      <li class="darkerlishadowdown">
-        <a href="http://startific.com">
-          <i class="fa fa-rocket fa-lg"></i>
-          <span class="nav-text">Fun</span>
-        </a>
-      </li>
-
-
     </ul>
-
-
-    <li>
-
-      <a href="http://startific.com">
-        <i class="fa fa-question-circle fa-lg"></i>
-        <span class="nav-text">Help</span>
-      </a>
-    </li>
-
-
     <ul class="logout">
       <li>
         <a href="http://startific.com">
-          <i class="fa fa-lightbulb-o fa-lg"></i>
+          <i class="fa fa-door-open fa-lg"></i>
           <span class="nav-text">
-            BLOG
+            Salir
           </span>
 
         </a>
       </li>
     </ul>
+    </div>
+</nav>
 

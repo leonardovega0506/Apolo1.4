@@ -24,6 +24,10 @@ export class AndService {
     return this.http.get(this.baseAnd + "/item?orderBy="+orderBy+"&pageNo="+pagina+"&pageSize="+pageSize+"&sortDir="+sort);
   }
 
+  public listarItemsByNombre(nombre){
+    return this.http.get(this.baseAnd+"/item/itemName?nombre="+nombre);
+  }
+
   //Obtener el producto por el codigo
   public obtenerItemByItemCode(itemCode: any) {
     return this.http.get(this.baseAnd + "/item/itemCode?itemCode=" + itemCode);

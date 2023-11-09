@@ -1,40 +1,14 @@
-body
-{
-  margin:0px;
-  padding:0px;
-	font-family: "Open Sans", arial;
-	background:url('https://static.tumblr.com/94eb957a00fd03c0c2f7d26decd71578/u1rhacw/osAmyyh1q/tumblr_static_tumblr_static_gaussian_blur_gradient_desktop_1680x943_wallpaper-393751.jpg');
-	color:#fff;
-	font-weight:300;
-
+@font-face {
+  font-family: Monserrat-Bold;
+  src: url(/assets/fonts/Montserrat-Bold.ttf);
 }
 
+@font-face {
+  font-family: Monserrat-Regular;
+  src: url(/assets/fonts/Montserrat-Regular.ttf);
+}
 
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
-
-@import url(https://fonts.googleapis.com/css?family=Titillium+Web:300);
-
-.logo{
-  
-}
-
-.settings {
-  
-  height:73px; 
-  float:left;
-  background:url( https://s3.postimg.org/bqfooag4z/startific.jpg);
-  background-repeat:no-repeat;
-  width:250px;
-  margin:0px;
- text-align: center;
-font-size:20px;
-font-family: 'Strait', sans-serif;
-
-}
-
-
-
-
 
 
 /* ScrolBar  */
@@ -107,7 +81,7 @@ opacity:1;
 }
 
 .main-menu {
-background:#F7F7F7;
+background:transparent;
 position:absolute;
 top:0;
 bottom:0;
@@ -142,8 +116,8 @@ width:255px;
 display:table;
 border-collapse:collapse;
 border-spacing:0;
-color:#8a8a8a;
-font-size: 13px;
+color:#fff;
+font-size: 14px;
 text-decoration:none;
 -webkit-transform:translateZ(0) scale(1,1);
 -webkit-transition:all .14s linear;
@@ -174,20 +148,9 @@ position:relative;
 display:table-cell;
 vertical-align:middle;
 width:190px;
-font-family: 'Titillium Web', sans-serif;
+font-family: 'Monserrat-Bold',sans-serif;
 }
 
-.main-menu .share {
-}
-
-
-
-.main-menu .fb-like {
-
-left: 180px;
-position:absolute;
-top: 15px;
-}
 
 .main-menu>ul.logout {
 position:absolute;
@@ -208,32 +171,10 @@ overflow:visible;
 }
 
 
-/* Logo Hover Property */
-
-
-.settings:hover, settings:focus {   
-  background:url( https://s17.postimg.org/74cl7s05b/logo_hover.jpg);
-  -webkit-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
--moz-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
--o-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0;
-transition: all 0.2s ease-in-out, width 0, height 0, top 0, left 0; 
-}
-
-.settings:active, settings:focus {   
-  background:url( https://s3.postimg.org/bqfooag4z/startific.jpg);
-  -webkit-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
--moz-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
--o-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0;
-transition: all 0.1s ease-in-out, width 0, height 0, top 0, left 0; 
-}
 
 
 a:hover,a:focus {
 text-decoration:none;
-border-left:0px solid #F7F7F7;
-
-
-
 }
 
 nav {
@@ -260,13 +201,30 @@ text-transform: uppercase;
 
 .darkerli
 {
-background-color:#ededed;
+  --s: 100px;
+  /* control the size */
+  --c: rgba(255, 80, 120, 0.1);
+  color: #fff;
+  font-family: 'Monserrat-Regular';
+  background-color: rgba(99, 74, 151, 0.1);
+  --_g:
+
+    #0000 calc(-650%/13) calc(50%/13), var(--c) 0 calc(100%/13),
+    #0000 0 calc(150%/13), var(--c) 0 calc(200%/13),
+    #0000 0 calc(250%/13), var(--c) 0 calc(300%/13);
+  --_g0: repeating-linear-gradient(45deg, var(--_g));
+  --_g1: repeating-linear-gradient(-45deg, var(--_g));
+  background:
+    var(--_g0), var(--_g0) var(--s) var(--s),
+    var(--_g1), var(--_g1) var(--s) var(--s) rgba(99, 74, 151, 0.9);
+  background-size: calc(2*var(--s)) calc(2*var(--s));
 text-transform:capitalize;  
 }
 
 .darkerlishadow
 {
-background-color:#ededed;
+  --s: 100px;
+  /* control the size */
 text-transform:capitalize;  
 -webkit-box-shadow: inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
 -moz-box-shadow:    inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
@@ -276,7 +234,7 @@ box-shadow:         inset 0px 5px 5px -4px rgba(50, 50, 50, 0.55);
 
 .darkerlishadowdown
 {
-background-color:#ededed;
+  /* control the size */
 text-transform:capitalize;  
 -webkit-box-shadow: inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
 -moz-box-shadow:    inset 0px -4px 5px -4px rgba(50, 50, 50, 0.55);
@@ -293,9 +251,9 @@ color:#fff;
 background-color:#00bbbb;
 text-shadow: 0px 0px 0px; 
 }
+
 .area {
 float: left;
-background: #e2e2e2;
 width: 100%;
 height: 100%;
 }
@@ -304,4 +262,44 @@ height: 100%;
   font-style: normal;
   font-weight: 300;
   src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+.contendio_total{
+  position: absolute;
+  top: 10%;
+  left: 20%;
+}
+
+
+.patron {
+  --s: 100px;
+  /* control the size */
+  --c: rgba(255, 80, 120, 0.1);
+  color: #fff;
+  font-family: 'Monserrat-Regular';
+  background-color: rgba(99, 74, 151, 0.1);
+  --_g:
+
+    #0000 calc(-650%/13) calc(50%/13), var(--c) 0 calc(100%/13),
+    #0000 0 calc(150%/13), var(--c) 0 calc(200%/13),
+    #0000 0 calc(250%/13), var(--c) 0 calc(300%/13);
+  --_g0: repeating-linear-gradient(45deg, var(--_g));
+  --_g1: repeating-linear-gradient(-45deg, var(--_g));
+  background:
+    var(--_g0), var(--_g0) var(--s) var(--s),
+    var(--_g1), var(--_g1) var(--s) var(--s) rgba(99, 74, 151, 0.9);
+  background-size: calc(2*var(--s)) calc(2*var(--s));
+}
+
+.sidebar {
+  --u: 1.5vmin;
+  --c1: #363636;
+  --c2: #2b2b2b;
+  --c3: #1e1e1e;
+  --c4: #121212;
+  height: 100vh;
+  background-color: #fff;
+  background-image: linear-gradient(120deg, transparent 114px, rgba(255, 80, 120, .08) 114px), linear-gradient(240deg, transparent 114px, rgba(255, 80, 120, .2) 114px);
+  /*background-position: 10px 10px, 10px 10px;*/
+  background-size: 93px 92px;
 }

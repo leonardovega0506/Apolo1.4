@@ -10,61 +10,82 @@ import { AndService } from 'src/app/services/api/and.service';
 })
 export class ListaItemAdminComponent {
     //Atributos
-    items: any = [];
+    lista_items: any = [];
+    nombreItem:any;
+    cantidad:any;
     itemCode: any ='';
     item: any;
-    page:number=0;
+    pages:number=0;
+    pageActual:number=0;
     botonprev=true;
     boton=true;
+    currentPage: number = 1;  
+    sortDir:boolean = true;
+    private columnaOrdenada: string = '';
   
     //Constructor
     constructor(private andService: AndService, private modal:NgbModal,private router:Router) { }
   
     //Inicio del componenete
     ngOnInit(): void {
-      this.rellenarItems(this.page);
+      this.cantidad=10;
+      this.rellenarItems(this.pageActual,this.cantidad,"idItem",this.sortDir);
     }
-    rellenarItems(pagina){
-      this.andService.listaItems(pagina,10,"idItem","asc").subscribe(
+    rellenarItems(pagina,cantidad,orderBy,sortDir){
+      this.andService.listaItems(pagina,cantidad,orderBy,sortDir).subscribe(
         (data:any) => {
-          if(data.last==true){
-            this.items = data.content;
+            this.lista_items = data.content;
+            this.pages = data.allPage;
             console.log(data);
             this.boton = false;
-          }
-          else if(pagina<=0){
-            this.items = data.contenido;
-            console.log(data);
-            this.botonprev = false;
-          }
-          else{
-            this.items = data.contenido;
-            console.log(data);
-          }
         },
         (error) => {
           console.log(error);
         }
       );
+    } 
+
+    buscarItemNombre(){
+      console.log(this.nombreItem);
+      this.andService.listarItemsByNombre(this.nombreItem).subscribe(
+        (data:any)=>{
+          console.log(data);
+          this.lista_items = data;
+        }
+      );
+    }
+
+
+
+    sortColumn(columna){
+      this.rellenarItems(this.currentPage-1,this.cantidad,columna,this.sortDir);
+        // Verifica si es la misma columna que se hizo clic anteriormente
+    if (this.columnaOrdenada === columna) {
+      // Si es la misma columna, invierte el orden
+      this.sortDir = !this.sortDir;
+    } else {
+      // Si es una nueva columna, restablece el orden a ascendente
+      this.sortDir = true;
+    }
+
+    // Actualiza la columna actualmente ordenada
+    this.columnaOrdenada = columna;
+
+    // Llama al método rellenarItems con la columna y el orden
+    this.rellenarItems(this.pageActual, this.cantidad,columna, this.sortDir ? 'asc' : 'desc');
+    }
+
+    changePage(page: number) {
+      this.currentPage = page;
+      this.rellenarItems(this.currentPage-1,this.cantidad,"idItem",this.sortDir);
+      // Lógica adicional para cambiar la página en tu aplicación
+    }
+
+    getPageNumbers(pages: number): number[] {
+      return Array.from({ length: pages }, (_, index) => index + 1);
     }
   
-    nextPage(){ 
-      this.page += 1;
-      this.botonprev=true;
-      this.rellenarItems(this.page);
-    }
-    prevPage(){
-      this.page-=1;
-      if(this.page==0){
-        this.botonprev = false;
-        this.boton=true;
-        this.rellenarItems(this.page);
-      }
-      else{
-        this.boton=true;
-        this.rellenarItems(this.page);
-      }
-    }
+
   
     
     //Metodo para buscar un producto
