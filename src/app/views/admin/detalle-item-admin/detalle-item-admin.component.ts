@@ -21,6 +21,7 @@ export class DetalleItemAdminComponent {
     idItem:''
   }
   id:any;
+  cadenaImpresa: string = '';
 
   //Constructor
   constructor(private aRoute:ActivatedRoute,private router:Router,private andService:AndService, private modal:NgbModal){}
@@ -34,6 +35,8 @@ export class DetalleItemAdminComponent {
       (data)=>{
         console.log(data);
         this.item=data;
+        const imageUrl = 'http://104.36.166.251:5757/fotos_productos/' + this.item.itemCode + '.jpg';
+        this.cadenaImpresa = imageUrl;
       },
       (error=>{
         console.log(error);
@@ -76,4 +79,6 @@ export class DetalleItemAdminComponent {
       }
     );
   }
+
+
 }

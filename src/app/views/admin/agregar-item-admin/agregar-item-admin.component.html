@@ -1,167 +1,167 @@
-
-<div class="container bg-light">
-  <form [formGroup]="nuevoForm">
-    <div class="border border-dark rounded" style="padding: 20px;">
-      <div class="row">
-        <div class="form-group col-md-2">
-          <label for="itemCode">Numero de Item</label>
-          <input type="text" class="form-control" id="itemCode" placeholder="Numero del Codigo"
-            formControlName="itemCode" required>
+<h1 class="titulo">Crear producto</h1>
+<div class="sidebar">
+  <div class="container">
+    <form [formGroup]="nuevoForm">
+      <div class="border border-dark rounded" style="padding: 20px;">
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label for="itemCode">Numero de Item</label>
+            <input type="text" class="form-control" id="itemCode" placeholder="Numero del Codigo"
+              formControlName="itemCode" required>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="itemName">Nombre de Item</label>
+            <input type="text" class="form-control" id="itemName" placeholder="Nombre del Producto"
+              formControlName="itemName">
+          </div>
+          <div class="form-group col-sm-2">
+            <label for="ncmCode">Codigo del SAT</label>
+            <select name="ncmCode" id="ncmCode" class="form-select-sm" formControlName="ncmCode">
+              <option>1</option>
+            </select>
+          </div>
         </div>
-        <div class="form-group col-md-4">
-          <label for="itemName">Nombre de Item</label>
-          <input type="text" class="form-control" id="itemName" placeholder="Nombre del Producto"
-            formControlName="itemName">
+        <br>
+        <div class="row">
+          <div class="form-group col-sm-2">
+            <label for="vatLiable">Sujeto a Impuesto</label> &nbsp;
+            <input type="checkbox" class="form-check-input" id="vatLiable" formControlName="vatLiable">
+          </div>
+          <div class="form-group col-sm-2">
+            <label for="taxVariable">IEPS</label> &nbsp;
+            <input type="checkbox" class="form-check-input" id="taxVariable" formControlName="taxVariable">
+          </div>
+          <div class="form-group col-sm-2">
+            <label for="taxType">Clase de Impuesto</label>&nbsp;
+            <input type="checkbox" class="form-check-input" id="taxType" formControlName="taxType">
+          </div>
         </div>
-        <div class="form-group col-sm-2">
-          <label for="ncmCode">Codigo del SAT</label>
-          <select name="ncmCode" id="ncmCode" class="form-select-sm" formControlName="ncmCode" >
-            <option>1</option>
-          </select>
+        <br>
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label for="itemType">Clase de Articulo</label>
+            <input type="text" class="form-control col-md-2" id="itemType" placeholder="Clase de Articulo"
+              formControlName="itemType">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="cardCode">Proveedor</label>
+            <input type="text" class="form-control" id="cardCode" placeholder="Proveedor" formControlName="cardCode">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="itemsGrpCode">Grupo de Articulo</label>
+            <select name="itemsGrpCode" id="itemsGrpCode" class="form-select size=8" formControlName="itmsGrpCod">
+              <option>1</option>
+            </select>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label for="sVolume">Volumen Venta</label>
+            <input type="text" class="form-control col-md-2" id="sVolume" placeholder="Volumen Venta"
+              formControlName="sVolume">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="sWeight1">Peso Venta</label>
+            <input type="text" class="form-control col-md-2" id="sWeight1" placeholder="Peso Venta"
+              formControlName="sWeight11">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="sWght1Unit">Peso 1: Unidad de medidas de venta</label>
+            <input type="text" class="form-control col-md-2" id="sWght1Unit" placeholder="Unidad de medidas de venta"
+              formControlName="sWght1Unit">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="iWeight1">Peso 1: Inventario</label>
+            <input type="text" class="form-control col-md-2" id="iWeight1" placeholder="Peso 1: Inventario"
+              formControlName="iWeight1">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label for="numInSale">Cantidad de artículos por unidad de medida</label>
+            <input type="text" class="form-control col-md-2" id="numInSale" placeholder="Cantidad de articulos"
+              formControlName="numInSale">
+          </div>
+          <div class="form-group col-md-2">
+            <br>
+            <label for="planingSys">Método de planificación</label>
+            <input type="text" class="form-control col-md-2" id="planingSys" placeholder="Metodo"
+              formControlName="planingSys">
+          </div>
+          <div class="form-group col-md-4">
+            <br>
+            <label for="prcrmntMtd">Método aprovisonamiento</label>
+            <input type="text" class="form-control col-md-2" id="prcrmntMtd" placeholder="Metodo"
+              formControlName="prcrmntMtd">
+          </div>
+          <div class="form-group col-md-2">
+            <br>
+            <label for="codeBars">Codigo de Barras</label>
+            <input type="text" class="form-control col-md-2" id="codeBars" placeholder="Codigo de Barras"
+              formControlName="codeBars">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-2">
+            <br>
+            <label for="uClasifStore">Clasificacion Store</label>
+            <select name="uClasifStore" id="uClasifStore" class="form-select" formControlName="uClasifStore">
+              <option>1</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <br>
+            <label for="uCode">Nombre Clasificacion</label>
+            <select name="uCode" id="uCode" class="form-select" formControlName="uCode">
+              <option>1</option>
+            </select>
+          </div>
+          <div class="form-group col-md-2">
+            <label for="salUnitMsr">Unidad de Medida de Ventas</label>
+            <input type="text" class="form-control col-md-2" id="salUnitMsr" placeholder="Unidad de medida"
+              formControlName="salUnitMsr">
+          </div>
+          <div class="form-group col-md-2">
+            <label for="salPackUn">Cantidad por Empaque( ventas )</label>
+            <input type="text" class="form-control col-md-2" id="salPackUn" placeholder="Cantidad por Empaque V"
+              formControlName="salPackUn">
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="form-group col-md-2">
+            <label for="invntryUom">Unidad de Medida de Inventario</label>
+            <input type="text" class="form-control col-md-2" id="invntryUom" placeholder="Unidad de medida"
+              formControlName="invntryUom">
+          </div>
+          <div class="form-group col-md-2">
+            <br>
+            <label for="buyUnitMsr">Unidad Compra</label>
+            <input type="text" class="form-control col-md-2" id="buyUnitMsr" placeholder="Unidad Compra"
+              formControlName="buyUnitMsr">
+          </div>
+          <div class="form-group col-md-2">
+            <br>
+            <label for="purPackMsr">Paquete Compra</label>
+            <input type="text" class="form-control col-md-2" id="purPackMsr" placeholder="Inner"
+              formControlName="purPackMsr">
+          </div>
+          <div class="form-group col-md-2">
+            <br>
+            <label for="salPackMsr">Paquete Venta</label>
+            <input type="text" class="form-control col-md-2" id="salPackMsr" placeholder="Inner"
+              formControlName="salPackMsr">
+          </div>
+          <div class="form-group col-md-2">
+            <br>
+            <label for="sww">Codigo Adicional</label>
+            <input type="text" class="form-control col-md-2" id="sww" placeholder="Codigo" formControlName="sww">
+          </div>
         </div>
       </div>
       <br>
-      <div class="row">
-        <div class="form-group col-sm-2">
-          <label for="vatLiable">Sujeto a Impuesto</label> &nbsp;
-          <input type="checkbox" class="form-check-input" id="vatLiable" formControlName="vatLiable">
-        </div>
-        <div class="form-group col-sm-2">
-          <label for="taxVariable">IEPS</label> &nbsp;
-          <input type="checkbox" class="form-check-input" id="taxVariable" formControlName="taxVariable">
-        </div>     
-        <div class="form-group col-sm-2">
-          <label for="taxType">Clase de Impuesto</label>&nbsp;
-          <input type="checkbox" class="form-check-input" id="taxType" formControlName="taxType">
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="form-group col-md-2">
-          <label for="itemType">Clase de Articulo</label>
-          <input type="text" class="form-control col-md-2" id="itemType" placeholder="Clase de Articulo"
-            formControlName="itemType">
-        </div>
-        <div class="form-group col-md-4">
-          <label for="cardCode">Proveedor</label>
-          <input type="text" class="form-control" id="cardCode" placeholder="Proveedor" formControlName="cardCode">
-        </div>
-        <div class="form-group col-md-2">
-          <label for="itemsGrpCode">Grupo de Articulo</label>
-          <select name="itemsGrpCode" id="itemsGrpCode" class="form-select size=8" formControlName="itmsGrpCod">
-            <option>1</option>
-          </select>
-        </div>
-      </div>  
-      <br>
-      <div class="row">
-        <div class="form-group col-md-2">
-          <label for="sVolume">Volumen Venta</label>
-          <input type="text" class="form-control col-md-2" id="sVolume" placeholder="Volumen Venta"
-            formControlName="sVolume">
-        </div>
-        <div class="form-group col-md-2">
-          <label for="sWeight1">Peso Venta</label>
-          <input type="text" class="form-control col-md-2" id="sWeight1" placeholder="Peso Venta"
-            formControlName="sWeight11">
-        </div>
-        <div class="form-group col-md-4">
-          <label for="sWght1Unit">Peso 1: Unidad de medidas de venta</label>
-          <input type="text" class="form-control col-md-2" id="sWght1Unit" placeholder="Unidad de medidas de venta"
-            formControlName="sWght1Unit">
-        </div>
-        <div class="form-group col-md-2">
-          <label for="iWeight1">Peso 1: Inventario</label>
-          <input type="text" class="form-control col-md-2" id="iWeight1" placeholder="Peso 1: Inventario"
-            formControlName="iWeight1">
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="form-group col-md-2">
-          <label for="numInSale">Cantidad de artículos por unidad de medida</label>
-          <input type="text" class="form-control col-md-2" id="numInSale" placeholder="Cantidad de articulos"
-            formControlName="numInSale">
-        </div>
-        <div class="form-group col-md-2">
-          <br>
-          <label for="planingSys">Método de planificación</label>
-          <input type="text" class="form-control col-md-2" id="planingSys" placeholder="Metodo"
-            formControlName="planingSys">
-        </div>
-        <div class="form-group col-md-4">
-          <br>
-          <label for="prcrmntMtd">Método aprovisonamiento</label>
-          <input type="text" class="form-control col-md-2" id="prcrmntMtd" placeholder="Metodo"
-            formControlName="prcrmntMtd">
-        </div>
-        <div class="form-group col-md-2">
-          <br>
-          <label for="codeBars">Codigo de Barras</label>
-          <input type="text" class="form-control col-md-2" id="codeBars" placeholder="Codigo de Barras"
-            formControlName="codeBars">
-        </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-md-2">
-          <br>
-          <label for="uClasifStore">Clasificacion Store</label>
-          <select name="uClasifStore" id="uClasifStore" class="form-select" formControlName="uClasifStore">
-            <option>1</option>
-          </select>
-        </div>
-        <div class="form-group col-md-4">
-          <br>
-          <label for="uCode">Nombre Clasificacion</label>
-          <select name="uCode" id="uCode" class="form-select" formControlName="uCode">
-            <option>1</option>
-          </select>
-        </div>
-        <div class="form-group col-md-2">
-          <label for="salUnitMsr">Unidad de Medida de Ventas</label>
-          <input type="text" class="form-control col-md-2" id="salUnitMsr" placeholder="Unidad de medida"
-            formControlName="salUnitMsr">
-        </div>
-        <div class="form-group col-md-2">
-          <label for="salPackUn">Cantidad por Empaque( ventas )</label>
-          <input type="text" class="form-control col-md-2" id="salPackUn" placeholder="Cantidad por Empaque V"
-            formControlName="salPackUn">
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="form-group col-md-2">
-          <label for="invntryUom">Unidad de Medida de Inventario</label>
-          <input type="text" class="form-control col-md-2" id="invntryUom"  placeholder="Unidad de medida"
-            formControlName="invntryUom">
-        </div>
-        <div class="form-group col-md-2">
-          <br>
-          <label for="buyUnitMsr">Unidad Compra</label>
-          <input type="text" class="form-control col-md-2" id="buyUnitMsr" placeholder="Unidad Compra"
-            formControlName="buyUnitMsr">
-        </div>
-        <div class="form-group col-md-2">
-          <br>
-          <label for="purPackMsr">Paquete Compra</label>
-          <input type="text" class="form-control col-md-2" id="purPackMsr" placeholder="Inner"
-            formControlName="purPackMsr">
-        </div>
-        <div class="form-group col-md-2">
-          <br>
-          <label for="salPackMsr">Paquete Venta</label>
-          <input type="text" class="form-control col-md-2" id="salPackMsr" placeholder="Inner"
-            formControlName="salPackMsr">
-        </div>
-        <div class="form-group col-md-2">
-          <br>
-          <label for="sww">Codigo Adicional</label>
-          <input type="text" class="form-control col-md-2" id="sww" placeholder="Codigo"
-            formControlName="sww">
-        </div>
-      </div>
-    </div>
-    <br>
       <div class="border border-dark rounded " style="padding-left:80px;padding-right: 80px;">
         <div class="row">
           <div class="form-group col-md-2">
@@ -228,7 +228,8 @@
           </div>
           <div class="form-group col-2" style="width: 200px;">
             <label for="cat_AccesoriosApple">Accesorios by Apple</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_AccesoriosApple" formControlName="cat_AccesoriosApple">
+            <input type="checkbox" class="form-check-input" id="cat_AccesoriosApple"
+              formControlName="cat_AccesoriosApple">
           </div>
           <div class="form-group col-2">
             <label for="cat_PestanasApple">Pesta&ntilde;as by Apple</label>&nbsp;
@@ -236,14 +237,16 @@
           </div>
           <div class="form-group col-2" style="width: 200px;">
             <label for="cat_AplicadoresApple">Aplicadores by Apple</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_AplicadoresApple" formControlName="cat_AplicadoresApple">
+            <input type="checkbox" class="form-check-input" id="cat_AplicadoresApple"
+              formControlName="cat_AplicadoresApple">
           </div>
         </div>
         <br>
         <div class="row">
           <div class="form-group col">
             <label for="cat_DepiladoresApple">Depiladores Apple</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_DepiladoresApple" formControlName="cat_DepiladoresApple">
+            <input type="checkbox" class="form-check-input" id="cat_DepiladoresApple"
+              formControlName="cat_DepiladoresApple">
           </div>
           <div class="form-group col-sm-2">
             <label for="cat_LapizAND">Lapiz AND</label>&nbsp;
@@ -255,7 +258,8 @@
           </div>
           <div class="form-group col-2">
             <label for="cat_DonasValerinas">Donas y Valerinas</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_DonasValerinas" formControlName="cat_DonasValerinas">
+            <input type="checkbox" class="form-check-input" id="cat_DonasValerinas"
+              formControlName="cat_DonasValerinas">
           </div>
           <div class="form-group col-2">
             <label for="cat_BroPasCucas">Broches,P y C</label>&nbsp;
@@ -263,7 +267,8 @@
           </div>
           <div class="form-group col-2">
             <label for="cat_PinzasDiademas">Pinzas y Diademas</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_PinzasDiademas" formControlName="cat_PinzasDiademas">
+            <input type="checkbox" class="form-check-input" id="cat_PinzasDiademas"
+              formControlName="cat_PinzasDiademas">
           </div>
         </div>
         <br>
@@ -290,7 +295,7 @@
           </div>
           <div class="form-group col-md-2">
             <label for="cat_Cocina">Cocina</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_Cocina" formControlName="cat_Cocina"> 
+            <input type="checkbox" class="form-check-input" id="cat_Cocina" formControlName="cat_Cocina">
           </div>
         </div>
         <br>
@@ -309,7 +314,8 @@
           </div>
           <div class="form-group col-md-auto">
             <label for="cat_EmpaquesRegalo">Empaques de Regalo</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_EmpaquesRegalo" formControlName="cat_EmpaquesRegalo">
+            <input type="checkbox" class="form-check-input" id="cat_EmpaquesRegalo"
+              formControlName="cat_EmpaquesRegalo">
           </div>
           <div class="form-group col-md-2">
             <label for="cat_Complemento">Complementos</label>&nbsp;
@@ -317,7 +323,8 @@
           </div>
           <div class="form-group col-md-auto">
             <label for="cat_CabelloMegaline">Cabello Megaline</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_CabelloMegaline" formControlName="cat_CabelloMegaline">
+            <input type="checkbox" class="form-check-input" id="cat_CabelloMegaline"
+              formControlName="cat_CabelloMegaline">
           </div>
         </div>
         <br>
@@ -363,7 +370,8 @@
           </div>
           <div class="form-group col-md-auto">
             <label for="cat_AccesoriosMegaline">Accesorios MEGALINE</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_AccesoriosMegaline" formControlName="cat_AccesoriosMegaline">
+            <input type="checkbox" class="form-check-input" id="cat_AccesoriosMegaline"
+              formControlName="cat_AccesoriosMegaline">
           </div>
           <div class="form-group col-md-auto">
             <label for="cat_AccesoriosAND">Accesorios AND</label>&nbsp;
@@ -382,15 +390,18 @@
           </div>
           <div class="form-group col-md-2">
             <label for="cat_DepiladoresAND">Depiladores AND</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_DepiladoresAND" formControlName="cat_DepiladoresAND">
+            <input type="checkbox" class="form-check-input" id="cat_DepiladoresAND"
+              formControlName="cat_DepiladoresAND">
           </div>
           <div class="form-group col-md-2">
             <label for="cat_AplicadoresAND">Aplicadores AND</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_AplicadoresAND" formControlName="cat_AplicadoresAND">
+            <input type="checkbox" class="form-check-input" id="cat_AplicadoresAND"
+              formControlName="cat_AplicadoresAND">
           </div>
           <div class="form-group col-md-2">
             <label for="cat_HebleeCosmetics">Hebble Cosmetics</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_HebleeCosmetics" formControlName="cat_HebleeCosmetics">
+            <input type="checkbox" class="form-check-input" id="cat_HebleeCosmetics"
+              formControlName="cat_HebleeCosmetics">
           </div>
           <div class="form-group col-md-2">
             <label for="cat_Marcas">Marcas</label>&nbsp;
@@ -417,7 +428,8 @@
           </div>
           <div class="form-group col-md-auto">
             <label for="cat_AccesorioBelleza">Accesorios de Belleza</label>&nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_AccesorioBelleza" formControlName="cat_AccesorioBelleza">
+            <input type="checkbox" class="form-check-input" id="cat_AccesorioBelleza"
+              formControlName="cat_AccesorioBelleza">
           </div>
           <div class="form-group col-md-auto">
             <label for="cat_Bissu">Bissú</label>&nbsp;
@@ -448,16 +460,26 @@
           </div>
           <div class="form-group col-md-2">
             <label for="cat_DanzonCosmetics">Dazon Cosmetics</label> &nbsp;
-            <input type="checkbox" class="form-check-input" id="cat_DanzonCosmetics" formControlName="cat_DanzonCosmetics">
+            <input type="checkbox" class="form-check-input" id="cat_DanzonCosmetics"
+              formControlName="cat_DanzonCosmetics">
           </div>
         </div>
-      </div> 
-    <div>
-      <br>
-      <br>
-      <button type="submit" class="btn btn-success">Guardar</button>
-      &nbsp; <button type="submit" class="btn btn-dark" >Salir</button>
       </div>
-  </form>
-  <br><br>
+      <div>
+        <div class="botonAgregar">
+          <a class="effect1" (click)="guardarItem()">
+            Crear Producto
+            <span class="bg"></span>
+          </a>
+        </div>
+        <div class="botonSalir">
+          <a class="effect2" [routerLink]="'/admin/item'">
+            Salir
+            <span class="bg1"></span>
+          </a>
+        </div>
+      </div>
+    </form>
+    <br><br>
+  </div>
 </div>

@@ -1,32 +1,44 @@
-<section class="articles">
-  <article>
-
-    <div class="article-wrapper">
-      <figure>
-        <!--<img src="http://104.36.166.251:5757/fotos_productos/{{this.item?.itemCode}}.jpg" alt="" />-->
-      </figure>
-      <div class="article-body">
-        <h2>{{item?.itemName}}</h2>
-        <p>
-          Codigo: {{item?.itemCode}}
-        </p>
-        <p>
-          Sat: {{item?.ncmCode}}
-        </p>
-        <p>
-          Resurtido: {{item?.properties4}}
-        </p>
-        <a href="/admin/item" class="read-more">
-          Regresar
-        </a>
-        <br>
-        <a (click)="openEditar(modalEdit)" class="read-more">
-          Editar
-        </a>
+<div>
+  <div class="d-flex justify-content-center container mt-5">
+    <div class="card p-3 bg-white"><i class="fa-brands fa-autoprefixer"></i>
+      <div class="about-product text-center mt-2">
+        <!--<img src="{{cadenaImpresa}}" width="300"
+          *ngIf="cadenaImpresa;else imagenGuia">-->
+        <div>
+          <h6 class="mt-0 text-black-50" style="font-family: 'Abel',sans-serif;font-size: 15px;">Ananda Distribuciones
+          </h6>
+          <h4 class="nombre">{{item?.itemName}}</h4>
+        </div>
       </div>
+      <div class="stats mt-2">
+        <div class="d-flex justify-content-between p-price"><span>Codigo
+            Articulo</span><span><b>{{item?.itemCode}}</b></span></div>
+        <div class="d-flex justify-content-between p-price"><span>Codigo
+            SAT</span><span><b>{{item?.ncmCode}}</b></span></div>
+        <div class="d-flex justify-content-between p-price"><span>
+            Resurtido: </span><span>{{item?.properties4}}</span></div>
+        <div class="d-flex justify-content-between p-price"><span>Item
+            Group</span><span><b>{{item?.itemsGroupCode}}</b></span></div>
+        <div class="d-flex justify-content-between p-price"><span>Codigo
+            Barras</span><span><b>{{item?.barCode}}</b></span></div>
+      </div>
+      <br>
     </div>
-  </article>
-</section>
+  </div>
+  <ng-template #imagenGuia>
+    <img src="assets/ANANDANEGRO_2.png" width="300">
+  </ng-template>
+</div>
+<div>
+  <div class="botonRegresar">
+    <a class="effect1" [routerLink]="'/admin/item'">
+      Regresar
+      <span class="bg"></span>
+    </a>
+  </div>
+</div>
+
+
 
 
 <!--Modal Crear Registro-->
@@ -48,3 +60,5 @@
     </div>
   </form>
 </ng-template>
+
+<!--Modal Crear Registro-->

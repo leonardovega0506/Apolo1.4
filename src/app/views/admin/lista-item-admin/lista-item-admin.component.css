@@ -546,6 +546,7 @@ input[type="radio"]{
 	margin-right: 0.65rem;
     font-family: 'Monserrat-Regular';
 }
+
 .cuadrante{
     display: flex;
     width: 80%;
