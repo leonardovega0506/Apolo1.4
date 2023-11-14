@@ -85,8 +85,8 @@ export class AndService {
   }
 
   //Listar orden por proveedor
-  public listaOrdenesByCardName(pageNo, pageSize, cardName){
-    return this.http.get(this.baseAnd+"/orden/cardName?cardName="+cardName+"&pageNO="+pageNo+"&pageSize="+pageSize);
+  public listaOrdenesByCardName(cardName){
+    return this.http.get(this.baseAnd+"/orden/cardName?cardName="+cardName);
   }
 
   //Listar orden por codigo proveedor

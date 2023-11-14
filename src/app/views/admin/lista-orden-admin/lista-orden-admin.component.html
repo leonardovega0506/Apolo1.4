@@ -1,74 +1,130 @@
 <h1 class="titulo">Ordenes</h1>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-<div class="main-content">
-  <div class="container mt-7">
-    <!-- Table -->
-    <!-- Dark table -->
-    <div class="row mt-5">
-      <div class="col">
-        <div class="card bg-default shadow">
-          <div class="card-header bg-transparent border-0">
-            <h3 class="text-white mb-0 font-Monserrat">Registros</h3>
-          </div>
-          <div class="table-responsive">
-            <table class="table align-items-center  table-flush">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col"># </th>
-                  <th scope="col"># Orden</th>
-                  <th scope="col">Nota</th>
-                  <th scope="col">Total</th>
-                  <th scope="col">Proveedor</th>
-                  <th scope="col">Accion</th>
-                </tr>
-              </thead>
-              <tbody *ngFor="let orden of ordenes">
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">{{orden.idOrdenCompra}}</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="color-td">
-                    {{orden.docNum}}
-                  </td>
-                  <td class="color-td">
-                    {{orden.estatnota_remision}}
-                  </td>
-                  <td class="color-td">
-                    <div class="avatar-group">
-                      {{orden.docTotal}}
-                    </div>
-                  </td>
-                  <td>
-                    <div class="d-flex align-items-center">
-                      <span class="mr-2">{{orden.cardName}}</span>
-                    </div>
-                  </td>
-                  <td class="text-right">
-                    <a class="button-2 text-white" [routerLink]="'/admin/orden/'+orden.idOrdenCompra">Detalles</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="card-footer bg-default py-4">
-            <nav aria-label="...">
-              <ul class="pagination justify-content-end mb-0">
-                <li class="page-item">
-                  <a class="page-link bg-sort" *ngIf="botonprev == true" (click)="prevPage()">Prev</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link bg-sort" *ngIf="boton==true" (click)="nextPage()">Next <span
-                      class="sr-only">(current)</span></a>
-                </li>
-              </ul>
-            </nav>
-          </div>
+
+<!--Botones-->
+<div>
+  <div class="botonBuscar">
+    <a class="effect2" >
+      Buscar orden por numero
+      <span class="bg1"></span>
+    </a>
+  </div>
+</div>
+<!--Fin Botones-->
+
+<br><br><br><br><br><br>
+<div class="tabla">
+  <!-- Barra buscar -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="input-group">
+          <input type="text" class="form-control input-text" placeholder="Buscar proveedor...."
+            aria-label="Recipient's username" name="nombreItem" aria-describedby="basic-addon2" [(ngModel)]="proveedorNombre"
+            (input)="buscarProveedorNombre()">
         </div>
+      </div>
+      <div class="col-sm-4">
+        <form class="form-horizontal pull-right">
+          <div class="form-group">
+            <select class="form-control" id="cantidad"
+              (change)="rellenarOrdenes(pageActual,$event.target['value'],'idItem','asc')" [(ngModel)]="cantidad"
+              name="cantidad">
+              <option [value]="5">5</option>
+              <option [value]="10">10</option>
+              <option [value]="15">15</option>
+              <option [value]="20">20</option>
+            </select>
+            <label for="cantidad" display="inline" style="font-family: 'Monserrat-Regular';">Cantidad</label>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+  <!--Fin barra buscar-->
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-striped custom-table" >
+        <thead>
+          <tr>
+            <th scope="col"># <br><a (click)="sortColumn('idOrdenCompra')"><i class="fa-solid fa-sort"></i></a></th>
+            <th scope="col"># Orden <br><a (click)="sortColumn('docNum')"><i class="fa-solid fa-sort"></i></a></th>
+            <th scope="col">Nota <br><a (click)="sortColumn('notaRemision')"><i class="fa-solid fa-sort"></i></a></th>
+            <th scope="col">Total <br><a (click)="sortColumn('docTotal')"><i class="fa-solid fa-sort"></i></a></th>
+            <th scope="col">Proveedor <br><a (click)="sortColumn('cardName')"><i class="fa-solid fa-sort"></i></a></th>
+            <th scope="col">Fecha <br><a (click)="sortColumn('docDate')"><i class="fa-solid fa-sort"></i></a></th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let orden of lista_ordenes">
+          <tr scope="row">
+            <td>
+              {{orden.idOrdenCompra}}
+            </td>
+            <td>{{orden.docNum}}</td>
+            <td *ngIf="orden.nota_remision;else notaDefault">
+              {{orden.nota_remision}}
+            </td>
+            <td>
+              {{orden.docTotal}}
+            </td>
+            <td>
+              {{orden.cardName}}
+            </td>
+            <td *ngIf="orden.docDate;else fechaActual">
+              {{orden.docDate}}
+            </td>
+            <td><a [routerLink]="'/admin/orden/'+orden.idOrdenCompra" class="more">Detalles</a></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <div class="btn-paginacion">
+            <ul *ngFor="let page of getPageNumbers(pages)">
+              <li>
+                <input type="checkbox" id="paginacion{{page}}" class="checkbox-hidden" [checked]="page === currentPage"
+                  (change)="changePage(page)" />
+                <label for="paginacion{{page}}">{{page}}</label>
+              </li>
+            </ul>
+          </div>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+
 </div>
+
+
+<ng-template #notaDefault>
+  <td>Sin nota</td>
+</ng-template>
+
+<ng-template #fechaActual>
+  <td>
+    {{getCurrentDate() |date:'yyyy-MM-dd'}}
+  </td>
+</ng-template>
+
+
+<ng-template #buscarItem let-modal>
+  <form>
+    <!--Cabecera-->
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Buscar Item por código</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo-->
+    <div class="modal-body fondo-modal">
+      <p>Ingrese el codigo a buscar</p>
+      <input type="text"  name="numeroEntrada" placeholder="Código del articulo"
+      class="form-control mr-sm-2">
+    </div>
+    <!--Footer-->
+    <div class="modal-footer">
+      <button type="submit" class="btn button">Generar</button>
+      <button type="button" class="btn  button-2" (click)="modal.close()">Cerrar</button>
+    </div>
+  </form>
+</ng-template>

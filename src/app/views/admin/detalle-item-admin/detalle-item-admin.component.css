@@ -1,104 +1,13 @@
-.botonRegresar {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    top: 120%;
-    left: 20%;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    width: 50px;
-    height: 50px;
-    color: #96BE1E;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    background: transparent;
-  }
-  
-  .effect1 {
-    color: #222;
-    text-decoration: none;
-    font-family: 'Monserrat-Regular', sans-serif;
-    font-size: 7px;
-    position: relative;
-    padding: 10px 25px 10px 20px;
-  
-    -webkit-transition: all 0.3s;
-  
-    -o-transition: all 0.3s;
-  
-    transition: all 0.3s;
-  
-    -webkit-transform: scale(3);
-  
-    -ms-transform: scale(3);
-  
-    transform: scale(3);
-    /*change scale(3) to scale(1)*/
-  }
-  
-  .effect1 .bg {
-    background: #96BE1E;
-    width: 10px;
-    border-radius: 5px;
-    position: absolute;
-    right: 0;
-    margin-top: -1px;
-    z-index: -1;
-  
-    -webkit-transition: all 0.3s;
-  
-    -o-transition: all 0.3s;
-  
-    transition: all 0.3s;
-  }
-  
-  .effect1:hover {
-    padding-right: 20px;
-    color: #fff;
-  }
-  
-  .effect1:hover .bg {
-    height: 50%;
-    width: 100%;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%);
-  }
-  
-  
-  .effect1 .bg:before {
-    bottom: 3px;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-  }
-  
-  .effect1 .bg:after {
-    top: 3px;
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
-  
-  .effect1:hover .bg:before,
-  .effect1:hover .bg:after {
-    right: 0;
-  }
-  
-  .effect1:hover .bg:before {
-    bottom: 6px;
-  }
-  
-  .effect1:hover .bg:after {
-    top: 6px;
-  }
+@font-face {
+  font-family: Monserrat-Bold;
+  src: url(/assets/fonts/Montserrat-Bold.ttf);
+}
+
+@font-face {
+  font-family: Monserrat-Regular;
+  src: url(/assets/fonts/Montserrat-Regular.ttf);
+}
+
   
   
   .botonActualizar {
@@ -201,4 +110,16 @@
     top: 6px;
   }
   
-  /* Fin Botones */
+  /* --Fin Boton Regresar-- */
+  /* ++Fin Botones++ */
+
+  h4{
+    font-family: 'Monserrat-Bold';
+    text-align: center;
+    font-size: 40px;
+  }
+  span{
+    font-family: 'Monserrat-Regular';
+    font-size: 15px;
+  }
+

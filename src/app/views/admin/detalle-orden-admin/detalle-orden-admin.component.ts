@@ -25,6 +25,8 @@ export class DetalleOrdenAdminComponent {
     errorMsg?: any;
     asignacion: boolean = false;
     listaDetalles=[];
+    tabla = false;
+    botonTabla = true;
   
     //Constructor
     constructor(private andService: AndService, private aRoute: ActivatedRoute, private router: Router, private modal: NgbModal) { }
@@ -76,6 +78,8 @@ export class DetalleOrdenAdminComponent {
         (data:any)=>{
             this.listaDetalles = data;
             console.log(data);
+            this.tabla = true;
+            this.botonTabla = false;
         },
         (error)=>{
             console.log(error);
