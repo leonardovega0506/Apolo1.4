@@ -1,52 +1,57 @@
 <h1 class="titulo">Usuarios</h1>
-<a class="button text-white" (click)="open(contenido)">Crear Usuarios</a>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-<div class="main-content">
-  <div class="container mt-7">
-    <!-- Table -->
-    <!-- Dark table -->
-    <div class="row mt-5">
-      <div class="col">
-        <div class="card bg-default shadow">
-          <div class="card-header bg-transparent border-0">
-            <h3 class="text-white mb-0 font-Monserrat">Registros</h3>
-          </div>
-          <div class="table-responsive">
-            <table class="table align-items-center  table-flush">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nombre</th>
-                  <th scope="col">Usuario</th>
-                  <th scope="col">Area</th>
-                </tr>
-              </thead>
-              <tbody *ngFor="let user of users">
-                <tr>
-                  <th scope="row">
-                    <div class="media align-items-center">
-                      <div class="media-body">
-                        <span class="mb-0 text-sm">{{user.idUsuario}}</span>
-                      </div>
-                    </div>
-                  </th>
-                  <td class="color-td">
-                    {{user.nombre}}
-                  </td>
-                  <td class="color-td">
-                    {{user.username}}
-                  </td>
-                  <td class="text-right">
-                    {{user.area}}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-      </div>
+
+
+<div>
+  <div class="botonCrear">
+    <a class="effect1" (click)="open(contenido)">
+      Crear Usuario
+      <span class="bg"></span>
+    </a>
+  </div>
+</div>
+<br><br><br><br><br><br>
+<div class="tabla">
+  <!--Fin barra buscar-->
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-striped custom-table" >
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Area</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let user of users">
+          <tr scope="row">
+            <td>
+              {{user.idUsuario}}
+            </td>
+            <td>{{user.nombre}}</td>
+            <td >
+              <span >
+                {{user.username}}
+              </span>
+            </td>
+            <td class="color-td">
+              <div class="avatar-group">
+                {{user.area}}
+              </div>
+            </td>   
+
+            <td><a [routerLink]="'/admin/registro/'+user.idRegistro" class="more">Detalles</a></td>
+          </tr>
+        </tbody>
+      
+      </table>
     </div>
   </div>
 </div>
+
+
+
 <!--Modal Crear Registro-->
 <ng-template #contenido let-modal>
   <form (ngSubmit)="crearUsuario()">
@@ -138,4 +143,5 @@
     </div>
   </form>
 </ng-template>
+
 

@@ -27,6 +27,7 @@ export class ListaUsuarioAdminComponent {
       this.andService.listaUsuarios().subscribe(
         (data) => {
           this.users = data;
+          console.log(data);
         },
         (error) => {
           console.log(error);
@@ -78,4 +79,5 @@ export class ListaUsuarioAdminComponent {
         this.usuarioData.password = "";
         this.usuarioData.username = "";
     }
+  
 }
