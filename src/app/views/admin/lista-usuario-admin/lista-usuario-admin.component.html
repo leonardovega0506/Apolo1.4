@@ -21,7 +21,6 @@
             <th scope="col">Nombre</th>
             <th scope="col">Usuario</th>
             <th scope="col">Area</th>
-            <th scope="col">Accion</th>
           </tr>
         </thead>
         <tbody *ngFor="let user of users">
@@ -40,8 +39,6 @@
                 {{user.area}}
               </div>
             </td>   
-
-            <td><a [routerLink]="'/admin/registro/'+user.idRegistro" class="more">Detalles</a></td>
           </tr>
         </tbody>
       

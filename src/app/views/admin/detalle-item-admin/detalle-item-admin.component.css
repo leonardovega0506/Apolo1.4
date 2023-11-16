@@ -10,9 +10,9 @@
 
   
   
-  .botonActualizar {
+  .botonRegresar {
     position: absolute;
-    left: 100%;
+    left: 10%;
     bottom: -35%;
     display: flex;
     justify-content: center;
@@ -32,7 +32,7 @@
     background: transparent;
   }
   
-  .effect2 {
+  .effect1 {
     color: #222;
     text-decoration: none;
     font-size: 7px;
@@ -53,7 +53,7 @@
     /*change scale(3) to scale(1)*/
   }
   
-  .effect2 .bg1 {
+  .effect1 .bg {
     background: #FFC300;
     border-radius: 5px;
     width: 10px;
@@ -69,12 +69,12 @@
     transition: all 0.3s;
   }
   
-  .effect2:hover {
+  .effect1.bg {
     padding-right: 20px;
     color: #fff;
   }
   
-  .effect2:hover .bg1 {
+  .effect1:hover .bg {
     height: 50%;
     width: 100%;
     -webkit-transform: translate(0, -50%);
@@ -83,30 +83,30 @@
   }
   
   
-  .effect2 .bg1:before {
+  .effect1 .bg1:before {
     bottom: 3px;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
   
-  .effect2 .bg1:after {
+  .effect1 .bg1:after {
     top: 3px;
     -webkit-transform: rotate(-45deg);
     -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
   
-  .effect2:hover .bg1:before,
-  .effect2:hover .bg1:after {
+  .effect1:hover .bg:before,
+  .effect1:hover .bg:after {
     right: 0;
   }
   
-  .effect2:hover .bg1:before {
+  .effect1:hover .bg:before {
     bottom: 6px;
   }
   
-  .effect2:hover .bg1:after {
+  .effect1:hover .bg:after {
     top: 6px;
   }
   

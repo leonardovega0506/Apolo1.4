@@ -101,7 +101,7 @@ export class AndService {
 
   //Obtener la orden por el numero de entrada
   public obtenerOrdenByDocNum(docNum: any) {
-    return this.http.get(this.baseAnd + "/orden/docNum/" + docNum);
+    return this.http.get(this.baseAnd + "/orden/docNum?docNum=" + docNum);
   }
 
   public obtenerDetallesOrden(id:any){

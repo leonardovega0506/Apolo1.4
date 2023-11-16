@@ -122,7 +122,7 @@
       <p>¿Cuenta con numero de Orden?</p>
       <p>
         <input type="radio" name="verificacion" value="Si" id="positivo" (click)="showData()">Sí
-        <input type="radio" name="verificacion" value="No" id="negativo" (click)="hideData()">No
+        <input type="radio" name="verificacion" value="No" id="negativo" (click)="hideData()" checked>No
       </p>
       <div *ngIf="verificacion == true">
         <div class="form__group">
@@ -147,7 +147,6 @@
         <br>
         <input type="text" [(ngModel)]="notaRemision" name="notaRemision" placeholder="Nota Remision"
         class="form-control mr-sm-2">
-        br
         <label for="numeroEntrada">Seleccione el tipo de orden</label><br>
         <select class="cuadrante" required [(ngModel)]="cuadrante" name="cuadrante" id="cuadrante">
           <option>Linea</option>

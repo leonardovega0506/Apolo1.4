@@ -43,10 +43,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agregar-item-admin.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { authInterceptorProviders } from './services/util/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -98,9 +105,16 @@ import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agre
     HttpClientModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule
   ],
-  providers: [],
+  providers: [
+    authInterceptorProviders,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

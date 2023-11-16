@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AndService } from 'src/app/services/api/and.service';
+import {catchError,from} from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lista-orden-admin',
@@ -11,18 +13,7 @@ import { AndService } from 'src/app/services/api/and.service';
 export class ListaOrdenAdminComponent {
   //Atributos
   lista_ordenes: any = [];
-  ordenData = {
-    docNum: '',
-    docDate: '',
-    docTime: '',
-    docTotal: '',
-    cardName: '',
-    docEntry: ''
-  }
-  orden?: any;
   page:number=0;
-  botonprev=true;
-  boton=true;
   pages:number=0;
   pageActual:number=0;
   currentPage: number = 1;  
@@ -30,11 +21,13 @@ export class ListaOrdenAdminComponent {
   private columnaOrdenada: string = '';
   cantidad:any=10;
   proveedorNombre:any;
+  docNum:any;
 
 
   //Constructor
   constructor(private andService: AndService, private modal: NgbModal, private router: Router) { }
 
+  //Obtener la fecha actual
   getCurrentDate():Date{
     return new Date();
   }
@@ -45,14 +38,14 @@ export class ListaOrdenAdminComponent {
 
 
   }
+
+  //Listado para obtener las ordenes
   rellenarOrdenes(pagina:number,cantidad,columna,sort){
     this.andService.listaOrdenes(pagina,cantidad,columna,sort).subscribe(
       (data:any) => {
         this.lista_ordenes = data.content;
         this.pages = data.allPage;
         console.log(data);
-        this.boton = false;
-
       },
       (error) => {
         console.log(error);
@@ -60,6 +53,7 @@ export class ListaOrdenAdminComponent {
     )
   }
 
+  //Listado para obtener proveedores
   buscarProveedorNombre(){
     console.log(this.proveedorNombre);
     this.andService.listaOrdenesByCardName(this.proveedorNombre).subscribe(
@@ -72,7 +66,7 @@ export class ListaOrdenAdminComponent {
 
   //Metodo para buscar orden por numero de Entrada
   buscarOrder() {
-    /*Swal.fire({
+    Swal.fire({
       icon: 'question',
       title: "Buscar Orden",
       text: "¿Desea Buscar la Orden?",
@@ -83,38 +77,58 @@ export class ListaOrdenAdminComponent {
       cancelButtonText: 'Cancelar'
     }).then(
       (e) => {
-        if (e.isConfirmed) {*/
-          this.andService.obtenerOrdenByDocNum(this.ordenData.docEntry).subscribe(
-            (data: any) => {
-
-              //Swal.fire('La Orden fue traida correctamente', 'success');
-              this.orden = data;
-              this.modal.dismissAll();
+        if (e.isConfirmed) 
+          {
+            Swal.fire({
+              title: 'Buscando',
+              didOpen: () => {
+                Swal.showLoading()
+              },
+            });
+            from(
+              this.andService.obtenerOrdenByDocNum(this.docNum)
+            )
+            .pipe(catchError((error)=>
+            {
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error al traer la orden' + error,
+                timer: 2000,
+              });
+              throw error;
+            })).subscribe((data)=>
+            {
+              Swal.close();
+              if (data != null) {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Exito',
+                  text: 'Exito al traer la orden',
+                  timer: 2000,
+                });
+                this.ngOnInit();
+                this.modal.dismissAll();
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Error al traer la orden',
+                  timer: 2000,
+                });
+              }
               this.ngOnInit();
-            },
-            (error) => {
-              //Swal.fire("Error", "Error al bucsar la orden", "error");
-            }
-          )//Cerrar subscribe 
-        }//Cerra If
-      //});//Cerrar then
+            });
+          }
 
-  //}
-
-  //Metodo para abrir la ventana modal de crear orden
-  openCreateOrder(ordenNueva) {
-    this.modal.open(ordenNueva, { size: 'lg' });
+      });
   }
+
   //Metodo para abrir la ventana modal de buscar una orden
   openBuscarOrder(buscarOrden) {
     this.modal.open(buscarOrden, { size: 'sm' });
   }
 
-  //Metodo para mandar la ruta de detalles
-  detallesOr(id?: any) {
-    this.router.navigate(['/admin/asignarProducto/', id]);
-    console.log(id);
-  }
 
   
   sortColumn(columna){
@@ -137,12 +151,13 @@ export class ListaOrdenAdminComponent {
 
   changePage(page: number) {
     this.currentPage = page;
-    this.rellenarOrdenes(this.currentPage-1,this.cantidad,"idItem",this.sortDir);
+    this.rellenarOrdenes(this.currentPage-1,this.cantidad,"idOrdenCompra",'asc');
     // Lógica adicional para cambiar la página en tu aplicación
   }
 
   getPageNumbers(pages: number): number[] {
     return Array.from({ length: pages }, (_, index) => index + 1);
   }
+
 
 }
