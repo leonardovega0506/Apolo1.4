@@ -1,1 +1,112 @@
-<p>lista-item-recibo works!</p>
+<h1 class="titulo">Productos</h1>
+<!--Botones-->
+<div>
+
+  <!--Boton para abrir modal buscar-->
+  <div class="botonBuscar">
+    <a class="effect2" (click)="open(buscarItem)">
+      Buscar producto por Código
+      <span class="bg1"></span>
+    </a>
+  </div>
+</div>
+
+<!--Tabla completa-->
+<div class="tabla">
+  <!-- Barra buscar -->
+  <div class="container-fluid">
+    <!-- Barra buscar y Select Tamaño en la misma línea -->
+    <div class="row justify-content-center px-2 py-2">
+      <div class="col-md-8">
+        <div class="input-group mb-3">
+          <!--Buscar por nombre del producto-->
+          <input type="text" class="form-control input-text" placeholder="Buscar productos...."
+            aria-label="Recipient's username" name="nombreItem" aria-describedby="basic-addon2" [(ngModel)]="nombreItem"
+            (input)="buscarItemNombre()">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <!--Mostrar la cantidad de registros que traera-->
+        <form class="form-horizontal pull-right">
+          <div class="form-group">
+            <select class="form-control" id="cantidad"
+              (change)="rellenarItems(pageActual,$event.target['value'],'idItem','asc')" [(ngModel)]="cantidad"
+              name="cantidad">
+              <option [value]="5">5</option>
+              <option [value]="10">10</option>
+              <option [value]="15">15</option>
+              <option [value]="20">20</option>
+            </select>
+            <label for="cantidad" display="inline" style="font-family: 'Monserrat-Regular';">Cantidad</label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--Fin barra buscar-->
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-striped custom-table" >
+        <thead>
+          <tr>
+            <!--Encabezados y sorteados-->
+            <th scope="col"># <br><a (click)="sortColumn('idItem')"><i class="fa-solid fa-sort"></i></a></th>
+            <th scope="col">Codigo<br><a (click)="sortColumn('itemCode')"><i class="fa-solid fa-sort"></i></a></th>
+            <th scope="col">Descripcion <br><a (click)="sortColumn('itemName')"><i class="fa-solid fa-sort"></i></a>
+            </th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let item of lista_items">
+          <!--Contenido-->
+          <tr scope="row">
+            <td>
+              {{item.idItem}}
+            </td>
+            <td>{{item.itemCode}}</td>
+            <td>
+              {{item.itemName}}
+            </td>
+            <td><a [routerLink]="'/recibo/item/'+item.idItem" class="more">Detalles</a></td>
+          </tr>
+        </tbody>
+        <!--Paginacion-->
+        <tfoot>
+          <div class="btn-paginacion">
+            <ul *ngFor="let page of getPageNumbers(pages)">
+              <li>
+                <input type="checkbox" id="paginacion{{page}}" class="checkbox-hidden" [checked]="page === currentPage"
+                  (change)="changePage(page)" />
+                <label for="paginacion{{page}}">{{page}}</label>
+              </li>
+            </ul>
+          </div>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!--Modal para buscar por itemCode-->
+<ng-template #buscarItem let-modal>
+  <form  (ngSubmit)="buscarItemCode()">
+    <!--Cabecera-->
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Buscar Item por código</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!--Cuerpo-->
+    <div class="modal-body fondo-modal">
+      <p>Ingrese el codigo a buscar</p>
+      <input type="text" [(ngModel)]="itemCode"  name="itemCode" placeholder="Código del articulo"
+      class="form-control mr-sm-2">
+    </div>
+    <!--Footer-->
+    <div class="modal-footer">
+      <button type="submit" class="btn button">Buscar</button>
+      <button type="button" class="btn  button-2" (click)="modal.close()">Cerrar</button>
+    </div>
+  </form>
+</ng-template>

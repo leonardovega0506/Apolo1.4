@@ -1,1 +1,63 @@
-<p>sidebar-compras works!</p>
+
+<div class="wrapper sidebar">
+    <div class="overlay"></div>
+    <div class="content fondo_total">
+      <div class="contendio_total">
+        <div *ngIf="isHomePage">
+          <h1 class="bienvenida">{{welcomeMessage}}</h1>
+          <h2>{{usuario}}</h2>
+          <br><br><br>
+          <img src="assets/ANANDANEGRO_2.png" width="750px">
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div> 
+  
+  <nav class="main-menu patron">
+    <br>
+    <div class="scrollbar patron" id="style-1">
+      <ul >
+        <li>
+          <a [routerLink]="'/compras'">
+            <i class="fa fa-house fa-lg"></i>
+            <span class="nav-text">Casa</span>
+          </a>
+        </li>
+        <li class="darkerlishadow">
+          <a [routerLink]="'/compras/item'">
+            <i class="fa fa-boxes-stacked fa-lg"></i>
+            <span class="nav-text">Productos</span>
+          </a>
+        </li>
+  
+        <li class="darkerli">
+          <a [routerLink]="'/compras/orden'">
+            <i class="fa fa-file-invoice fa-lg"></i>
+            <span class="nav-text">Ordenes</span>
+          </a>
+        </li>
+  
+        <li class="darkerli">
+          <a [routerLink]="'/compras/registro'">
+            <i class="fa fa-clock-rotate-left fa-lg"></i>
+            <span class="nav-text">Registros</span>
+          </a>
+        </li>
+  
+      </ul>
+      <ul class="logout">
+        <li>
+          <a (click)="logout()">
+            <i class="fa fa-door-open fa-lg"></i>
+            <span class="nav-text">
+              Salir
+            </span>
+  
+          </a>
+        </li>
+      </ul>
+      </div>
+  </nav>
+  
+  

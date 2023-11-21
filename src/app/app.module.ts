@@ -54,6 +54,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AgregarItemAdminComponent } from './views/admin/agregar-item-admin/agregar-item-admin.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { authInterceptorProviders } from './services/util/auth.interceptor';
+import { AgregarItemComprasComponent } from './views/compras/agregar-item-compras/agregar-item-compras.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { authInterceptorProviders } from './services/util/auth.interceptor';
     ListaItemReciboComponent,
     ListaRegistroReciboComponent,
     SidebarReciboComponent,
-    AgregarItemAdminComponent
+    AgregarItemAdminComponent,
+    AgregarItemComprasComponent
   ],
   imports: [
     BrowserModule,

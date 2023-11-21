@@ -38,7 +38,7 @@
 .botonCrear {
   position: absolute;
   left: 10%;
-  bottom: 50%;
+  bottom: 75%;
   display: flex;
   justify-content: center;
   align-items: center;

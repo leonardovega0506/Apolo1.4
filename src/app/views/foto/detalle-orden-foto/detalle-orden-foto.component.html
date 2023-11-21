@@ -1,1 +1,120 @@
-<p>detalle-orden-foto works!</p>
+<h1 class="titulo">Detalle Orden</h1>
+<div>
+  <div class="botonAsignar">
+    <a class="effect3"  *ngIf="orden?.docNum==0" (click)="open(contenido)">
+      Asginar Orden
+      <span class="bg2"></span>
+    </a>
+  </div>
+</div>
+<div>
+  <div class="d-flex justify-content-center container mt-5">
+    <div class="card p-3 bg-white"><i class="fa-brands fa-autoprefixer"></i>
+      <div class="about-product text-center mt-2">
+        <!--<img src="{{cadenaImpresa}}" width="300"
+          *ngIf="cadenaImpresa;else imagenGuia">-->
+        <div>
+          <h6 class="mt-0 text-black-50" style="font-family: 'Abel',sans-serif;font-size: 15px;">Ananda Distribuciones
+          </h6>
+          <h4 class="nombre"></h4>
+        </div>
+      </div>
+      <div class="stats mt-2">
+        <div class="d-flex justify-content-between p-price"><span>Codigo
+            Orden</span><span><b>{{orden?.docNum}}</b></span></div>
+        <div class="d-flex justify-content-between p-price"><span>Proveedor&nbsp;&nbsp;&nbsp;&nbsp;
+          </span><span><b>{{orden?.cardName}}</b></span></div>
+        <div class="d-flex justify-content-between p-price"><span>
+            Fecha </span><span>{{orden?.docDate}}</span></div>
+        <div class="d-flex justify-content-between p-price"><span>Total
+          </span><span><b>{{orden?.docTotal | currency}} </b></span></div>
+        <div class="d-flex justify-content-between p-price"><span>Cuadrante
+          </span><span><b>{{orden?.cuadrante}}</b></span></div>
+      </div>
+      <br>
+    </div>
+  </div>
+  <ng-template #imagenGuia>
+    <img src="assets/ANANDANEGRO_2.png" width="300">
+  </ng-template>
+</div>
+
+
+<div>
+  <div class="botonDetalle">
+    <a class="effect1" (click)="traerDetallesOrden()" *ngIf="botonTabla">
+      Detalles
+      <span class="bg"></span>
+    </a>
+  </div>
+</div>
+
+<br><br>
+<div class="container" *ngIf="tabla">
+  <div class="table-responsive">
+    <table class="table table-striped custom-table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Codigo</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Cantidad</th>
+          <th scope="col">Accion</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let detalle of listaDetalles">
+        <tr scope="row">
+          <td>
+            {{detalle.idDetalleOrden}}
+          </td>
+          <td>{{detalle.itemCode}}</td>
+          <td>
+            {{detalle.itemDescription}}
+          </td>
+          <td>
+            {{detalle.precio}}
+          </td>
+          <td>
+            {{detalle.cantidad}}
+          </td>
+          <td><a [routerLink]="'/admin/item/'+detalle.itemModel.idItem" class="more">Detalles</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!--Ventana Modal Asignar Orden-->
+<ng-template #contenido let-modal>
+  <form (ngSubmit)="asignarOrden()">
+    <div class="modal-header fondo-cabecera">
+      <h4 class="modal-title">Asignar Orden</h4>
+      <button class="btn close" aria-label="close" type="button" (click)="modal.dismiss()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body fondo-modal-buscar">
+      <div class="col">
+        <label for="ejemplo">Numero de Orden</label>
+        <input type="text" [(ngModel)]="docNum" class="form-control" name="docEntry"
+          placeholder="Numero de Orden">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn button">Asignar</button>
+    </div>
+  </form>
+</ng-template>
+<!--Cerrar Ventana Modal Buscar Orden-->
+
+
+<div>
+  <div class="botonRegresar">
+    <a class="effect2" [routerLink]="'/foto/orden'">
+      Regresar
+      <span class="bg1"></span>
+    </a>
+  </div>
+</div>
